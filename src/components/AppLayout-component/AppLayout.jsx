@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import GlobalStyle from 'components/GlobalStyle';
 import {
@@ -25,7 +26,9 @@ const AppLayout = () => {
         </NavigationWrapper>
       </Header>
       <Main>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </Main>
       <GlobalStyle />
     </Layout>

@@ -1,19 +1,35 @@
-import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import { fetchMovieById } from 'services/api';
+import { Loader } from 'components/Loader-component/Loader';
 
 const MovieDetails = () => {
   const [fullMovieDescription, setFullMovieDEscription] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const { movieId } = useParams();
+
+  const location = useLocation();
+  const backLickLocation = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     const getMoviesById = async () => {
       try {
+        setIsLoading(true);
+        setError(false);
         const movieDetails = await fetchMovieById(movieId);
         setFullMovieDEscription(movieDetails);
       } catch (error) {
-        console.log(error);
+        setError(true);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -27,8 +43,10 @@ const MovieDetails = () => {
   return (
     <div>
       <div>Movie Details page</div>
-      {fullMovieDescription && (
+      {isLoading && !error && <Loader />}
+      {fullMovieDescription && !isLoading && (
         <>
+          <Link to={backLickLocation.current}>Return Back</Link>
           <h2>{fullMovieDescription.title}</h2>
           <img
             src={imageStart + fullMovieDescription.poster_path}
@@ -58,7 +76,9 @@ const MovieDetails = () => {
           <NavLink to="reviews">Reviews</NavLink>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

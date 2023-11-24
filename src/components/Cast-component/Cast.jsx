@@ -12,14 +12,14 @@ const Cast = () => {
       try {
         const cast = await fetchMovieCast(movieId);
         setMovieCast(cast);
-        console.log(cast);
+        // console.log(cast);
       } catch (error) {
         console.log(error);
       }
     };
 
     getMovieCast();
-  });
+  }, [movieId]);
 
   const imageStart = 'https://image.tmdb.org/t/p/w500';
 

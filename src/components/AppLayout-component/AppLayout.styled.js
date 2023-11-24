@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const Layout = styled.div`
   max-width: 1400px;
+  min-height: 100vh;
   margin-right: auto;
   margin-left: auto;
   padding-right: 34px;

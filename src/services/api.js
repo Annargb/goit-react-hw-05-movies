@@ -23,11 +23,8 @@ export const fetchMovieCast = async movieId => {
   return response.data.cast;
 };
 
-// https://api.themoviedb.org/3/search/movie
-
 export const fetchMovieByRequest = async request => {
   const response = await axios.get(`search/movie?api_key=${KEY}&query=${request}
 `);
-  console.log(response.data);
   return response.data.results;
 };

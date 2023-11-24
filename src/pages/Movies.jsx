@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { fetchMovieByRequest } from 'services/api';
 
 const Movies = () => {
   const [listOfFilms, setListOfFilms] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
+
+  const location = useLocation();
+  console.log(location);
 
   const updateQueryString = event => {
     const request = event.target.value;
@@ -35,7 +38,7 @@ const Movies = () => {
       try {
         const movie = await fetchMovieByRequest(query);
         setListOfFilms(movie);
-        console.log(movie);
+        // console.log(movie);
       } catch (error) {
         console.log(error);
       }
@@ -59,7 +62,9 @@ const Movies = () => {
       <ul>
         {listOfFilms.map(({ title, id }) => (
           <li key={id}>
-            <Link to={id}>{title}</Link>
+            <Link to={`${id}`} state={{ from: location }}>
+              {title}
+            </Link>
           </li>
         ))}
       </ul>
