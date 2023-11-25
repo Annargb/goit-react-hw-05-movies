@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import GlobalStyle from 'components/GlobalStyle';
+import { Loader } from 'components/Loader-component/Loader';
 import {
   Layout,
   Header,
@@ -26,7 +27,7 @@ const AppLayout = () => {
         </NavigationWrapper>
       </Header>
       <Main>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </Main>

@@ -1,23 +1,16 @@
-import { Suspense, useEffect, useRef, useState } from 'react';
-import {
-  Link,
-  NavLink,
-  Outlet,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { Suspense, useEffect, useState } from 'react';
+import { Outlet, useParams } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 import { fetchMovieById } from 'services/api';
 import { Loader } from 'components/Loader-component/Loader';
+import { MovieDescription } from 'components/MovieDescription - component/MovieDescription';
 
 const MovieDetails = () => {
-  const [fullMovieDescription, setFullMovieDEscription] = useState(null);
+  const [fullMovieDescription, setFullMovieDescription] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const { movieId } = useParams();
-
-  const location = useLocation();
-  const backLickLocation = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     const getMoviesById = async () => {
@@ -25,9 +18,13 @@ const MovieDetails = () => {
         setIsLoading(true);
         setError(false);
         const movieDetails = await fetchMovieById(movieId);
-        setFullMovieDEscription(movieDetails);
+        setFullMovieDescription(movieDetails);
       } catch (error) {
         setError(true);
+        toast.error('Oops, Something went wrong! Try reloading the page!', {
+          duration: 3500,
+          position: 'top-right',
+        });
       } finally {
         setIsLoading(false);
       }
@@ -36,49 +33,19 @@ const MovieDetails = () => {
     getMoviesById();
   }, [movieId]);
 
-  // const { title, overview, poster_path,  } = fullMovieDescription;
-  // console.log(fullMovieDescription.genres);
-  const imageStart = 'https://image.tmdb.org/t/p/w500';
-
   return (
     <div>
-      <div>Movie Details page</div>
       {isLoading && !error && <Loader />}
       {fullMovieDescription && !isLoading && (
         <>
-          <Link to={backLickLocation.current}>Return Back</Link>
-          <h2>{fullMovieDescription.title}</h2>
-          <img
-            src={imageStart + fullMovieDescription.poster_path}
-            alt={fullMovieDescription.title}
-            width="350"
-          />
-          <p>
-            Vote average: {fullMovieDescription.vote_average} (vote count:{' '}
-            {fullMovieDescription.vote_count}).
-          </p>
-          <p>Release date: {fullMovieDescription.release_date}.</p>
-          <p>Genres:</p>
-          <ul>
-            {fullMovieDescription.genres.map(({ name }) => (
-              <li key={name}>{name}</li>
-            ))}
-          </ul>
-          <p>Duration: {fullMovieDescription.runtime} min.</p>
-          <p>Overview: {fullMovieDescription.overview}</p>
+          <MovieDescription description={fullMovieDescription} />
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
         </>
       )}
-      <ul>
-        <li>
-          <NavLink to="cast">Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to="reviews">Reviews</NavLink>
-        </li>
-      </ul>
-      <Suspense fallback={<div>Loading subpage...</div>}>
-        <Outlet />
-      </Suspense>
+
+      <Toaster />
     </div>
   );
 };

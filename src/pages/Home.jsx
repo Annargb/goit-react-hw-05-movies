@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { fetchTrendingMovies } from 'services/api';
 import { TrendingMoviesList } from 'components/TrendingMovies-component/TrendingMoviesList';
-import { Loader } from 'components/Loader-component/Loader';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -17,6 +17,10 @@ const Home = () => {
         setTrendingMovies(movies);
       } catch (error) {
         setError(true);
+        toast.error('Oops, Something went wrong! Try reloading the page!', {
+          duration: 3500,
+          position: 'top-right',
+        });
       } finally {
         setIsLoading(false);
       }
@@ -28,10 +32,10 @@ const Home = () => {
   return (
     <div>
       <h2>Trending Movies Today</h2>
-      {isLoading && !error && <Loader />}
-      {!isLoading && trendingMovies.length > 0 && (
+      {!isLoading && !error && trendingMovies.length > 0 && (
         <TrendingMoviesList movies={trendingMovies} />
       )}
+      <Toaster />
     </div>
   );
 };

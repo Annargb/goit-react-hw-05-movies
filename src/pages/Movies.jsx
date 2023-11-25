@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { fetchMovieByRequest } from 'services/api';
+import { Loader } from 'components/Loader-component/Loader';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Movies = () => {
   const [listOfFilms, setListOfFilms] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
 
   const location = useLocation();
-  console.log(location);
 
   const updateQueryString = event => {
     const request = event.target.value;
@@ -23,6 +26,10 @@ const Movies = () => {
     const request = event.target.elements.searchFilms.value;
 
     if (request === '') {
+      toast.error('Enter data in the field to search for movies', {
+        duration: 2500,
+        position: 'top-right',
+      });
       return setSearchParams({});
     }
 
@@ -36,11 +43,18 @@ const Movies = () => {
 
     const getMovieByRequest = async () => {
       try {
+        setIsLoading(true);
+        setError(false);
         const movie = await fetchMovieByRequest(query);
         setListOfFilms(movie);
-        // console.log(movie);
       } catch (error) {
-        console.log(error);
+        setError(true);
+        toast.error('Oops, Something went wrong! Try reloading the page!', {
+          duration: 3500,
+          position: 'top-right',
+        });
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -59,15 +73,19 @@ const Movies = () => {
         />
         <button type="submit">Search</button>
       </form>
-      <ul>
-        {listOfFilms.map(({ title, id }) => (
-          <li key={id}>
-            <Link to={`${id}`} state={{ from: location }}>
-              {title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {isLoading && <Loader />}
+      {!isLoading && !error && (
+        <ul>
+          {listOfFilms.map(({ title, id }) => (
+            <li key={id}>
+              <Link to={`${id}`} state={{ from: location }}>
+                {title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+      <Toaster />
     </div>
   );
 };

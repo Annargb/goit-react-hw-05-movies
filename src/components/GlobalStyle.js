@@ -22,11 +22,17 @@ ul, ol {
   padding-left: 0;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
 a {
   text-decoration: none;
 }
 
-h1, h2, p {
+h1, h2, h3, h4, h5, h6, p {
   margin-top: 0;
   margin-bottom: 0;
 }
