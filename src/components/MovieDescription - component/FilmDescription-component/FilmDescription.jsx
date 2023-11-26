@@ -28,7 +28,14 @@ export const FilmDescription = ({
       </TitleOfFilm>
       <FilmWrapper>
         <ImageWrapper>
-          <img src={imageStart + poster_path} alt={title} />
+          <img
+            src={
+              poster_path
+                ? imageStart + poster_path
+                : 'https://diekos.by/public/images/nophoto.jpg?v=1.0.6'
+            }
+            alt={title}
+          />
         </ImageWrapper>
         <div>
           <p>

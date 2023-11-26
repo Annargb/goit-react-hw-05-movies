@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MovieList = styled.ul`
+export const ListOfCommonMovies = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 48px;

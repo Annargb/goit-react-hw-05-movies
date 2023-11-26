@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { fetchMovieByRequest } from 'services/api';
 import { Loader } from 'components/Loader-component/Loader';
 import toast, { Toaster } from 'react-hot-toast';
+import { MovieList } from 'components/MovieList-component/MovieList';
 
 const Movies = () => {
   const [listOfFilms, setListOfFilms] = useState([]);
@@ -10,8 +11,6 @@ const Movies = () => {
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
-
-  const location = useLocation();
 
   const updateQueryString = event => {
     const request = event.target.value;
@@ -74,17 +73,7 @@ const Movies = () => {
         <button type="submit">Search</button>
       </form>
       {isLoading && <Loader />}
-      {!isLoading && !error && (
-        <ul>
-          {listOfFilms.map(({ title, id }) => (
-            <li key={id}>
-              <Link to={`${id}`} state={{ from: location }}>
-                {title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {!isLoading && !error && <MovieList movies={listOfFilms} />}
       <Toaster />
     </div>
   );
