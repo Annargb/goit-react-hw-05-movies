@@ -4,6 +4,7 @@ import { fetchMovieByRequest } from 'services/api';
 import { Loader } from 'components/Loader-component/Loader';
 import toast, { Toaster } from 'react-hot-toast';
 import { MovieList } from 'components/MovieList-component/MovieList';
+import { MovieForm } from 'components/Form-component/Form';
 
 const Movies = () => {
   const [listOfFilms, setListOfFilms] = useState([]);
@@ -62,16 +63,11 @@ const Movies = () => {
 
   return (
     <div>
-      <h3>Movies page</h3>
-      <form onSubmit={onFormSubmit}>
-        <input
-          type="text"
-          name="searchFilms"
-          defaultValue={query}
-          onChange={updateQueryString}
-        />
-        <button type="submit">Search</button>
-      </form>
+      <MovieForm
+        onSubmit={onFormSubmit}
+        query={query}
+        change={updateQueryString}
+      />
       {isLoading && <Loader />}
       {!isLoading && !error && <MovieList movies={listOfFilms} />}
       <Toaster />

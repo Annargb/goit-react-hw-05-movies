@@ -9,12 +9,23 @@ import {
   NavigationWrapper,
   HeaderNavigationList,
   Main,
+  LogoText,
+  WrapperLogo,
 } from './AppLayout.styled';
 
 const AppLayout = () => {
   return (
     <Layout>
       <Header>
+        <WrapperLogo to="/">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2797/2797990.png"
+            alt="logo"
+            width="90"
+            height="90"
+          />
+          <LogoText>choose a movie for today</LogoText>
+        </WrapperLogo>
         <NavigationWrapper>
           <HeaderNavigationList>
             <li>

@@ -1,7 +1,9 @@
+// import { HomeTitle } from 'components/HomeTitle-component/HomeTitle';
 import { MovieList } from 'components/MovieList-component/MovieList';
 import { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { fetchTrendingMovies } from 'services/api';
+import { HomeMainTitle } from 'components/HomeMainTitle-component/HomeMainTitle';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -31,7 +33,7 @@ const Home = () => {
 
   return (
     <div>
-      <h2>Trending Movies Today</h2>
+      <HomeMainTitle />
       {!isLoading && !error && trendingMovies.length > 0 && (
         <MovieList movies={trendingMovies} />
       )}

@@ -1,7 +1,13 @@
 import { useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { FilmDescription } from './FilmDescription-component/FilmDescription';
-import { AdditionInfoLink } from './MovieDescriprion.styled';
+import {
+  AdditionInfoLink,
+  AdditionInfoTitle,
+  ReturnBackButton,
+  ReturnBackIcon,
+  ButtonText,
+} from './MovieDescriprion.styled';
 
 export const MovieDescription = ({ description }) => {
   const location = useLocation();
@@ -9,9 +15,12 @@ export const MovieDescription = ({ description }) => {
 
   return (
     <>
-      <Link to={backLickLocation.current}>Return Back</Link>
+      <ReturnBackButton to={backLickLocation.current}>
+        <ReturnBackIcon />
+        <ButtonText>Return Back</ButtonText>
+      </ReturnBackButton>
       <FilmDescription description={description} />
-      <h2>Additional information</h2>
+      <AdditionInfoTitle>Additional information</AdditionInfoTitle>
       <ul>
         <li>
           <AdditionInfoLink to="cast">Cast</AdditionInfoLink>
