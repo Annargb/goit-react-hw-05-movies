@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import GlobalStyle from 'components/GlobalStyle';
 import { Loader } from 'components/Loader-component/Loader';
+import logo from '../../img/cinema.png';
 import {
   Layout,
   Header,
@@ -18,12 +19,7 @@ const AppLayout = () => {
     <Layout>
       <Header>
         <WrapperLogo to="/">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/2797/2797990.png"
-            alt="logo"
-            width="90"
-            height="90"
-          />
+          <img src={logo} alt="logo" width="70" height="70" />
           <LogoText>choose a movie for today</LogoText>
         </WrapperLogo>
         <NavigationWrapper>

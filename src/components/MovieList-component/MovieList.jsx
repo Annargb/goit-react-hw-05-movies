@@ -1,5 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ListOfCommonMovies, MovieItem } from './MovieList.styled';
+import {
+  ListOfCommonMovies,
+  MovieItem,
+  MovieTitle,
+  ImgWrapper,
+} from './MovieList.styled';
 
 export const MovieList = ({ movies }) => {
   const location = useLocation();
@@ -13,16 +18,25 @@ export const MovieList = ({ movies }) => {
             to={location.pathname === '/' ? `movies/${id}` : `${id}`}
             state={{ from: location }}
           >
-            <img
-              src={
-                poster_path
-                  ? imageStart + poster_path
-                  : 'https://diekos.by/public/images/nophoto.jpg?v=1.0.6'
-              }
-              alt={title}
-              width="350"
-            />
-            <h3>{title}</h3>
+            <ImgWrapper
+              style={{
+                backgroundImage: ` url(${imageStart + poster_path})`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}
+            >
+              {/* <img
+                src={
+                  poster_path
+                    ? imageStart + poster_path
+                    : 'https://diekos.by/public/images/nophoto.jpg?v=1.0.6'
+                }
+                alt={title}
+                // width="300"
+              /> */}
+            </ImgWrapper>
+            <MovieTitle>{title}</MovieTitle>
           </Link>
         </MovieItem>
       ))}

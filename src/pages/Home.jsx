@@ -1,4 +1,3 @@
-// import { HomeTitle } from 'components/HomeTitle-component/HomeTitle';
 import { MovieList } from 'components/MovieList-component/MovieList';
 import { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';

@@ -14,7 +14,6 @@ export const FilmWrapper = styled.div`
   display: flex;
   gap: 44px;
   margin-bottom: 28px;
-  /* max-height: 900px; */
   padding-left: 20px;
   padding-right: 20px;
 `;
