@@ -1,39 +1,39 @@
 import styled from 'styled-components';
 
 export const FormSearchMovie = styled.form`
+  position: relative;
+  width: 100%;
   display: flex;
-  gap: 8px;
   margin-bottom: 28px;
-  margin-left: auto;
-  margin-right: auto;
 `;
 
 export const FormInput = styled.input`
-  /* position: relative; */
-  width: 250px;
+  width: 420px;
   padding: 12px;
-  font-size: inherit;
+  font-size: 18px;
   border-radius: 25px;
-  border: 1px solid rgba(31, 3, 85, 0.5);
+  border: 2px solid rgba(31, 3, 85, 0.5);
   outline: none;
+  margin-left: auto;
+  margin-right: auto;
+  color: #1f0355;
 
   &:focus {
-    border: 1px solid #1f0355;
+    border: 2px solid #1f0355;
   }
 `;
 
 export const FormButton = styled.button`
-  /* position: absolute;
-  /* top: 50%;
-  /* right: 16px; */
-  /* right: 16px;
+  position: absolute;
+  top: 50%;
+  left: 60%;
   transform: translateY(-50%);
-  transform: translateX(-50%);  */
-  padding: 12px;
-  font-size: inherit;
+  padding: 8px;
+  font-size: 18px;
   border-radius: 25px;
-  background-color: rgba(31, 3, 85, 0.5);
+  background-color: rgba(31, 3, 85, 0.9);
   border: none;
   color: #fff;
-  border: 1px solid #1f0355;
+  border: none;
+  /* border: 1px solid #1f0355; */
 `;

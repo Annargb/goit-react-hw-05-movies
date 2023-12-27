@@ -26,7 +26,7 @@ const Movies = () => {
     const request = event.target.elements.searchFilms.value;
 
     if (request === '') {
-      toast.error('Enter data in the field to search for movies', {
+      toast.error('Enter data in the field to search for movies!', {
         duration: 2500,
         position: 'top-right',
       });
@@ -46,7 +46,15 @@ const Movies = () => {
         setIsLoading(true);
         setError(false);
         const movie = await fetchMovieByRequest(query);
-        setListOfFilms(movie);
+        if (movie.length === 0) {
+          setError(true);
+          toast.error("We didn't find any movies matching your request!", {
+            duration: 3500,
+            position: 'top-right',
+          });
+        } else {
+          setListOfFilms(movie);
+        }
       } catch (error) {
         setError(true);
         toast.error('Oops, Something went wrong! Try reloading the page!', {

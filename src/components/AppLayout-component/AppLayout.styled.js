@@ -5,7 +5,7 @@ export const Layout = styled.div`
   max-width: 100wh;
   min-height: 100vh;
   /* background-color: rgba(116, 84, 199, 0.18); */
-  background-color: rgb(118 142 205 / 39%);
+  background-color: rgb(69 72 80 / 39%);
 `;
 
 export const Header = styled.header`
@@ -32,11 +32,11 @@ export const NavigationWrapper = styled.nav`
 export const HeaderMenuLink = styled(NavLink)`
   font-size: 22px;
   font-weight: 600;
-  text-transform: uppercase;
   color: #fff;
 
   &.active {
     color: rgba(94, 166, 117, 1);
+    text-decoration: underline;
   }
 
   &:hover,
@@ -66,7 +66,7 @@ export const LogoText = styled.p`
   font-size: 22px;
   font-weight: 600;
   line-height: 0.9;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   background: linear-gradient(135deg, #12bcb0 20%, #fabe0e 70%);
   background-clip: text;
   -webkit-background-clip: text;

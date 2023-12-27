@@ -1,8 +1,15 @@
 import {
+  Container,
   TitleOfFilm,
   FilmWrapper,
   ImageWrapper,
+  // DescriptionList,
+  AccentList,
+  DescriptionItem,
   GenresList,
+  ContainerDescription,
+  DescriptionText,
+  AccentText,
 } from './Filmdescription.styled';
 import { formatDatefromApi, calculateVotes } from 'services/formatData';
 
@@ -24,7 +31,7 @@ export const FilmDescription = ({
   const formatedDate = formatDatefromApi(release_date);
 
   return (
-    <div
+    <Container
       style={{
         backgroundImage: `linear-gradient(to right, rgb(44, 38, 65, 0.8) calc((50vw - 170px) - 340px), rgb(47, 73, 34, 0.66) 50%, rgb(65, 25, 60, 0.9) 100%), url(${
           imageStart + backdrop_path
@@ -33,13 +40,6 @@ export const FilmDescription = ({
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
       }}
-      // style={{
-      //   backgroundImage: `linear-gradient(to right, rgba(31.5, 10.5, 10.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 10.5, 10.5, 0.84) 50%, rgba(31.5, 10.5, 10.5, 0.84) 100%), url(${
-      //     imageStart + backdrop_path
-      //   })`,
-      //   backgroundSize: 'cover',
-      //   backgroundRepeat: 'no-repeat',
-      // }}
     >
       <TitleOfFilm>
         {title} ({date})
@@ -55,39 +55,77 @@ export const FilmDescription = ({
             alt={title}
           />
         </ImageWrapper>
-        <ul>
-          <li>
-            <p>Vote average:</p>
-            <p>
+        <ContainerDescription>
+          <AccentList>
+            <AccentText>Vote average:</AccentText>
+            <AccentText>Release date:</AccentText>
+            <AccentText>Genres:</AccentText>
+            <AccentText>Duration:</AccentText>
+            <AccentText>Overview:</AccentText>
+          </AccentList>
+
+          <ul>
+            <DescriptionItem>
+              <DescriptionText>
+                {' '}
+                {calculateVotes(vote_average)} ({vote_count}{' '}
+                {vote_count === 1 ? 'vote' : 'votes'}).
+              </DescriptionText>
+            </DescriptionItem>
+            <DescriptionItem>
+              <DescriptionText>{formatedDate}.</DescriptionText>
+            </DescriptionItem>
+            <DescriptionItem>
+              {' '}
+              <GenresList>
+                {genres.map(({ name }) => (
+                  <li key={name}>
+                    <DescriptionText>{name}</DescriptionText>
+                  </li>
+                ))}
+              </GenresList>
+            </DescriptionItem>
+            <DescriptionItem>
+              <DescriptionText>{runtime} min.</DescriptionText>
+            </DescriptionItem>
+            <DescriptionItem>
+              <DescriptionText>{overview}</DescriptionText>
+            </DescriptionItem>
+          </ul>
+        </ContainerDescription>
+        {/* <ul>
+          <DescriptionList>
+            <AccentText>Vote average:</AccentText>
+            <DescriptionText>
               {' '}
               {calculateVotes(vote_average)} ({vote_count}{' '}
               {vote_count === 1 ? 'vote' : 'votes'}).
-            </p>
-          </li>
-          <li>
-            <p>Release date:</p>
-            <p>{formatedDate}.</p>
-          </li>
-          <li>
+            </DescriptionText>
+          </DescriptionList>
+          <DescriptionList>
+            <AccentText>Release date:</AccentText>
+            <DescriptionText>{formatedDate}.</DescriptionText>
+          </DescriptionList>
+          <DescriptionList>
             <GenresList>
-              <p>Genres:</p>
+              <AccentText>Genres:</AccentText>
               {genres.map(({ name }) => (
                 <li key={name}>
-                  <p>{name}</p>
+                  <DescriptionText>{name}</DescriptionText>
                 </li>
               ))}
             </GenresList>
-          </li>
-          <li>
-            <p>Duration:</p>
-            <p>{runtime} min.</p>
-          </li>
-          <li>
-            <p>Overview:</p>
-            <p>{overview}</p>
-          </li>
-        </ul>
+          </DescriptionList>
+          <DescriptionList>
+            <AccentText>Duration:</AccentText>
+            <DescriptionText>{runtime} min.</DescriptionText>
+          </DescriptionList>
+          <DescriptionList>
+            <AccentText>Overview:</AccentText>
+            <DescriptionText>{overview}</DescriptionText>
+          </DescriptionList>
+        </ul> */}
       </FilmWrapper>
-    </div>
+    </Container>
   );
 };

@@ -5,6 +5,7 @@ import {
   MovieTitle,
   ImgWrapper,
 } from './MovieList.styled';
+import defaultImage from '../../img/360_F_36942622_9SUXpSuE5JlfxLFKB1jHu5Z07eVIWQ2W.jpg';
 
 export const MovieList = ({ movies }) => {
   const location = useLocation();
@@ -20,10 +21,13 @@ export const MovieList = ({ movies }) => {
           >
             <ImgWrapper
               style={{
-                backgroundImage: ` url(${imageStart + poster_path})`,
+                backgroundImage: ` url(${
+                  poster_path ? imageStart + poster_path : defaultImage
+                })`,
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
+                backgroundColor: '#fff',
               }}
             >
               {/* <img

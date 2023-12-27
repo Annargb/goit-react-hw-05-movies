@@ -2,7 +2,8 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import GlobalStyle from 'components/GlobalStyle';
 import { Loader } from 'components/Loader-component/Loader';
-import logo from '../../img/cinema.png';
+// import logo from '../../img/cinema.png';
+import logo from '../../img/popcorn.png';
 import {
   Layout,
   Header,
@@ -10,7 +11,7 @@ import {
   NavigationWrapper,
   HeaderNavigationList,
   Main,
-  LogoText,
+  // LogoText,
   WrapperLogo,
 } from './AppLayout.styled';
 
@@ -19,8 +20,8 @@ const AppLayout = () => {
     <Layout>
       <Header>
         <WrapperLogo to="/">
-          <img src={logo} alt="logo" width="70" height="70" />
-          <LogoText>choose a movie for today</LogoText>
+          {/* <LogoText>choose a movie for today</LogoText> */}
+          <img src={logo} alt="logo" width="200" />
         </WrapperLogo>
         <NavigationWrapper>
           <HeaderNavigationList>

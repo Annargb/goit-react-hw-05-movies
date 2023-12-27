@@ -33,7 +33,6 @@ const Reviews = () => {
 
   return (
     <div>
-      <h3>Reviews:</h3>
       {movieReviews.length > 0 && !isLoading && !error && (
         <ReviewsList reviews={movieReviews} />
       )}

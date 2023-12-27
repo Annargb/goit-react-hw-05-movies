@@ -7,6 +7,8 @@ import {
   ReturnBackButton,
   ReturnBackIcon,
   ButtonText,
+  AdditionalList,
+  AdditionalListItem,
 } from './MovieDescriprion.styled';
 
 export const MovieDescription = ({ description }) => {
@@ -21,14 +23,14 @@ export const MovieDescription = ({ description }) => {
       </ReturnBackButton>
       <FilmDescription description={description} />
       <AdditionInfoTitle>Additional information</AdditionInfoTitle>
-      <ul>
-        <li>
+      <AdditionalList>
+        <AdditionalListItem>
           <AdditionInfoLink to="cast">Cast</AdditionInfoLink>
-        </li>
-        <li>
+        </AdditionalListItem>
+        <AdditionalListItem>
           <AdditionInfoLink to="reviews">Reviews</AdditionInfoLink>
-        </li>
-      </ul>
+        </AdditionalListItem>
+      </AdditionalList>
     </>
   );
 };
