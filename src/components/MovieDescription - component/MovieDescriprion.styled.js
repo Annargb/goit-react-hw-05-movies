@@ -12,8 +12,6 @@ export const AdditionInfoTitle = styled.h2`
 export const AdditionInfoLink = styled(NavLink)`
   font-size: 18px;
   font-weight: 600;
-  /* line-height: 1.5; */
-  /* color: rgba(31, 3, 85, 0.9); */
   color: #1d1d1d;
 
   &.active {

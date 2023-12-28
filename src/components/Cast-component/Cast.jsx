@@ -32,11 +32,10 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <div>
-      <h3>Cast:</h3>
+    <>
       {!isLoading && !error && <CastList cast={movieCast} />}
       <Toaster />
-    </div>
+    </>
   );
 };
 

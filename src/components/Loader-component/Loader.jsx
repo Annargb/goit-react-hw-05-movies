@@ -6,11 +6,15 @@ export const Loader = () => (
     width={100}
     color="#4fa94d"
     wrapperStyle={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingTop: '200px',
-      // marginTop: '200px',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      margin: 'auto',
+      // display: 'flex',
+      // justifyContent: 'center',
+      // alignItems: 'center',
+      // paddingTop: '200px',
+      // // marginTop: '200px',
     }}
     wrapperClass=""
     visible={true}

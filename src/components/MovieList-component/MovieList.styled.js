@@ -16,7 +16,6 @@ export const MovieTitle = styled.h3`
   color: rgba(31, 3, 85, 1);
 
   &:hover {
-    /* color: rgb(31 119 59); */
     color: rgba(31, 3, 85, 1);
     text-decoration: underline;
   }

@@ -27,7 +27,7 @@ export const MovieList = ({ movies }) => {
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-                backgroundColor: '#fff',
+                backgroundColor: `${poster_path ? 'none' : '#fff'}`,
               }}
             >
               {/* <img
