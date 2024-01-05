@@ -2,13 +2,20 @@ import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Layout = styled.div`
-  max-width: 100wh;
-  min-height: 100vh;
-  /* background-color: rgba(116, 84, 199, 0.18); */
   background-color: rgb(111 123 154 / 39%);
 `;
 
 export const Header = styled.header`
+  background-color: rgba(31, 3, 85, 1);
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+`;
+
+export const HeaderWrapper = styled.div`
+  max-width: 1400px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 15px 24px 15px 24px;
   position: sticky;
   top: 0;
   left: 0;
@@ -18,10 +25,6 @@ export const Header = styled.header`
   justify-content: space-between;
   gap: 10px;
   min-height: 80px;
-  padding: 15px 28px 15px 28px;
-  background-color: rgba(31, 3, 85, 1);
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
 
 export const NavigationWrapper = styled.nav`
@@ -66,7 +69,6 @@ export const LogoText = styled.p`
   font-size: 22px;
   font-weight: 600;
   line-height: 0.9;
-  /* text-transform: uppercase; */
   background: linear-gradient(135deg, #12bcb0 20%, #fabe0e 70%);
   background-clip: text;
   -webkit-background-clip: text;

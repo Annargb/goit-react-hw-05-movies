@@ -11,6 +11,7 @@ import {
   NavigationWrapper,
   HeaderNavigationList,
   Main,
+  HeaderWrapper,
   // LogoText,
   WrapperLogo,
 } from './AppLayout.styled';
@@ -19,20 +20,22 @@ const AppLayout = () => {
   return (
     <Layout>
       <Header>
-        <WrapperLogo to="/">
-          {/* <LogoText>choose a movie for today</LogoText> */}
-          <img src={logo} alt="logo" width="200" />
-        </WrapperLogo>
-        <NavigationWrapper>
-          <HeaderNavigationList>
-            <li>
-              <HeaderMenuLink to="/">Home</HeaderMenuLink>
-            </li>
-            <li>
-              <HeaderMenuLink to="/movies">Movies</HeaderMenuLink>
-            </li>
-          </HeaderNavigationList>
-        </NavigationWrapper>
+        <HeaderWrapper>
+          <WrapperLogo to="/">
+            {/* <LogoText>choose a movie for today</LogoText> */}
+            <img src={logo} alt="logo" width="200" />
+          </WrapperLogo>
+          <NavigationWrapper>
+            <HeaderNavigationList>
+              <li>
+                <HeaderMenuLink to="/">Home</HeaderMenuLink>
+              </li>
+              <li>
+                <HeaderMenuLink to="/movies">Movies</HeaderMenuLink>
+              </li>
+            </HeaderNavigationList>
+          </NavigationWrapper>
+        </HeaderWrapper>
       </Header>
       <Main>
         <Suspense fallback={<Loader />}>
