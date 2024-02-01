@@ -2,6 +2,7 @@ import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Layout = styled.div`
+  min-height: 100vh;
   background-color: rgb(111 123 154 / 39%);
 `;
 
@@ -57,6 +58,7 @@ export const HeaderNavigationList = styled.ul`
 
 export const Main = styled.main`
   max-width: 1400px;
+
   margin-right: auto;
   margin-left: auto;
   padding: 24px;

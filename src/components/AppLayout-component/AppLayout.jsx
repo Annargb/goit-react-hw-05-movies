@@ -4,6 +4,7 @@ import GlobalStyle from 'components/GlobalStyle';
 import { Loader } from 'components/Loader-component/Loader';
 // import logo from '../../img/cinema.png';
 import logo from '../../img/popcorn.png';
+// import logo from '../../img/logom.png';
 import {
   Layout,
   Header,
@@ -23,7 +24,7 @@ const AppLayout = () => {
         <HeaderWrapper>
           <WrapperLogo to="/">
             {/* <LogoText>choose a movie for today</LogoText> */}
-            <img src={logo} alt="logo" width="200" />
+            <img src={logo} alt="logo" width="160" />
           </WrapperLogo>
           <NavigationWrapper>
             <HeaderNavigationList>

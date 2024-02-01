@@ -34,6 +34,7 @@ const Cast = () => {
   return (
     <>
       {!isLoading && !error && <CastList cast={movieCast} />}
+      {!movieCast.length && <p>We haven't found any actors for this movie.</p>}
       <Toaster />
     </>
   );

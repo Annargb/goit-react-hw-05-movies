@@ -2,10 +2,7 @@ import { ListOfCast, CastItem, ImgWrapper, ActorName } from './CastList.styled';
 import unknown from '../../../img/un.jpg';
 
 export const CastList = ({ cast }) => {
-  // 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector-PNG-File.png'
   const imageStart = 'https://image.tmdb.org/t/p/w500';
-
-  console.log(cast);
 
   return (
     <ListOfCast>
