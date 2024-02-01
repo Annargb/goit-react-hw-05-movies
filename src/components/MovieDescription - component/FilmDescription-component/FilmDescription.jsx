@@ -77,7 +77,7 @@ export const FilmDescription = ({
             </DescriptionItem>
             <DescriptionItem>
               {' '}
-              {genres.name ? (
+              {/* {genres.length ? (
                 <GenresList>
                   {genres.map(({ name }) => (
                     <li key={name}>
@@ -87,14 +87,14 @@ export const FilmDescription = ({
                 </GenresList>
               ) : (
                 <DescriptionText>{'---'}</DescriptionText>
-              )}
-              {/* <GenresList>
+              )} */}
+              <GenresList>
                 {genres.map(({ name }) => (
                   <li key={name}>
                     <DescriptionText>{name}</DescriptionText>
                   </li>
                 ))}
-              </GenresList> */}
+              </GenresList>
             </DescriptionItem>
             <DescriptionItem>
               <DescriptionText>{runtime} min.</DescriptionText>
